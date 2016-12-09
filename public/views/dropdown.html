@@ -1,0 +1,7 @@
+<md-content data-layout="row" data-layout-align="center center"> <md-input-container class="dropdown" data-flex="grow"><!--TODO unable to data-prefix md-container-class, angular material issue--> <md-select data-ng-model="selected.item" md-container-class="allDropdownItems" class="selectedItem"> <md-option class="dropdownOption autoHeight" data-ng-value="publication" data-ng-repeat="publication in contents.givenPublications"> <div data-iw-publication data-show-as-match="false" data-publication="publication.data" onclick="//TODO: this is quite ugly but we couldn't 
+                    // find another way which doesn't break the layout completely
+                    if ($(arguments[0].target).closest('.selectedItem').length) {
+                    	var el = angular.element(arguments[0].target);
+                    	window.open(el.scope().selected.item.data.metadata.sourceId,'_blank');
+                    	arguments[0].stopImmediatePropagation();
+                    }"> </div> </md-option> </md-select> </md-input-container> </md-content>
