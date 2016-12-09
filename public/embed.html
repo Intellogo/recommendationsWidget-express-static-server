@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>My page</title>
+</head>
+<body>
+<div>
+	<iframe id="intellogo-widget" src="https://recommendations-widget.herokuapp.com" width="600" height="100%" seamless='seamless' frameBorder="0"></iframe>
+		<script>
+		var intellogoParams = {
+                                contentSelection: {
+                                    type: 'byPaste', //byUrls/byPaste/search
+                                    urls: [
+                                        'http://www.countrylife.co.uk/property/drawing-rooms-perfect-for-christmas-trees-80887',
+                                        'http://www.theguardian.com/us-news/2015/dec/03/republicans-sheldon-adelson-speeches-republican-jewish-coalition',
+                                        'http://feeds.huffingtonpost.com/c/35496/f/677045/s/4bfa7d8f/sc/38/l/0L0Shuffingtonpost0N0C20A150C120C0A30Crefugee0Epsychological0Etrauma0In0I870A97120Bhtml/story01.htm',
+                                        "http://edition.cnn.com/2015/12/18/us/virginia-school-shut-islam-homework/index.html"
+                                        //		'http://venturebeat.com/2015/12/03/livelist-launches-its-tv-guide-like-listing-app-for-live-stream-performances/',
+                                        //		'http://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1001917'
+                                        //		'http://hothardware.com/reviews/intel-skylake-u-series-laptop-processor-benchmarks'
+                                    ]
+                                },
+                                recommendationOptions: 'content',
+                                showInsights: true,
+                                rerateDaysThreshold: 0,
+                                //sources: [{sourceName: 'EPUBS', sourceValue: 'Epubs'}],
+                                sourceGroups: [{sourceName: 'Wikipedia', sourceValue: 'wikipedia'}, {sourceName: 'Web', sourceValue: 'web'}]
+							  };
+		window.addEventListener('message', function(event) {
+			if (event.origin == 'https://recommendations-widget.herokuapp.com' && event.data == 'ready') {
+				document.getElementById('intellogo-widget').contentWindow.postMessage(JSON.stringify(intellogoParams), 'https://recommendations-widget.herokuapp.com/');
+			}
+		}, false);
+	</script>
+</div>
+</body>
+</html>
